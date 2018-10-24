@@ -1,0 +1,56 @@
+﻿@model Applicant
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Applicant";
+}
+<div class="jumbotron text-center ">
+    <h2 class="page-header">Applicant Registration</h2> 
+</div>
+<div class="jumbotron text-center">
+    @using (Html.BeginForm("AddApplicant", "Employee",FormMethod.Post))
+
+    {@Html.ValidationSummary(false)
+
+    <label class="label_one"> First Name :</label>
+    @Html.TextBoxFor(m => m.FirstName, new { @class = "input_one" })<br />
+
+    <label class="label_one">Last Name :</label>
+    @Html.TextBoxFor(m => m.LastName, new { @class = "input_one" })<br />
+
+    <label class="label_one">Gender :</label> 
+
+    @Html.RadioButtonFor(m => m.GenderName, Applicant.Gender.Male) <label>Male</label> @Html.RadioButtonFor(m => m.GenderName, Applicant.Gender.Female)<label>Female</label><br />
+
+
+    <label class="label_one">Adhar Card Number :</label>
+    @Html.TextBoxFor(m => m.Adhar, new { @class = "input_one" })<br />
+
+    <label class="label_one">Phone Number :</label>
+    @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "input_one" })<br />
+
+    <label class="label_one">Nationality :</label>
+    @Html.DropDownListFor(m => m.NationalityName, new SelectList(Enum.GetValues(typeof(Applicant.Nationality))),
+                                "Select Nationality",new { @class = "input_one" })<br />
+
+    <br />
+    <strong class="text-primary">Address Details</strong><br />
+    <panel class="panel-body ">
+
+
+        <label class="label_one">Village Name :</label>
+        @Html.TextBoxFor(m => m.Address.Village, new { @class = "input_one" })<br />
+        <label class="label_one">Mandal Name :</label>
+        @Html.TextBoxFor(m => m.Address.Mandal, new { @class = "input_one" })<br />
+        <label class="label_one">District Name :</label>
+        @Html.TextBoxFor(m => m.Address.District, new { @class = "input_one" })<br />
+        <label class="label_one">State Name:</label>
+        @Html.TextBoxFor(m => m.Address.State, new { @class = "input_one" })<br />
+        <label class="label_one">PinCode :</label>
+        @Html.TextBoxFor(m => m.Address.PinCode, new { @class = "input_one" })<br />
+    </panel>
+
+    <input type="submit" name="Submit" value="Submit" class="btn btn-primary" />
+
+}
+
+</div>

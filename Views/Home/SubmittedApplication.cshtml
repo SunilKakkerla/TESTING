@@ -1,0 +1,54 @@
+﻿
+@model Applicant
+@{
+    ViewData["Title"] = "SubmittedApplication";
+}
+
+<h2>SubmittedApplication</h2>
+
+
+@{
+    ViewData["Title"] = "Applicant";
+}
+
+<h2>Applicant</h2>
+
+@using (Html.BeginForm("SaveApplicant", "Home"))
+
+{
+    <label> First Name</label>
+    @Html.DisplayFor(m => m.FirstName)
+
+    <label>Last Name</label>
+    @Html.DisplayFor(m => m.LastName)
+
+
+    <label>Gender</label>
+    @Html.DisplayFor(m => m.GenderName)
+    @Html.RadioButtonFor(m => m.GenderName, new SelectList(Enum.GetValues(typeof(Applicant.Gender))))
+
+    <label>Adhar Card Number</label>
+    @Html.DisplayFor(m => m.Adhar)
+
+    <label>Phone Number</label>
+    @Html.DisplayFor(m => m.PhoneNumber)
+
+    <label>First Name</label>
+    @Html.DropDownListFor(m => m.NationalityName, new SelectList(Enum.GetValues(typeof(Applicant.Nationality))),
+                        "Select Gender"))
+
+    <strong>Address Details</strong>
+    <label>Village Name</label>
+    @Html.DisplayFor(m => m.Address.Village)
+    <label>Mandal Name</label>
+    @Html.DisplayFor(m => m.Address.Mandal)
+    <label>District Name</label>
+    @Html.DisplayFor(m => m.Address.District)
+    <label>State Name</label>
+    @Html.DisplayFor(m => m.Address.State)
+    <label>PinCode</label>
+    @Html.DisplayFor(m => m.Address.PinCode)
+    <input type="button" name="Back" />
+    <input type="button" name="Confirm" />
+}
+
